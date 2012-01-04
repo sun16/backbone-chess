@@ -1,0 +1,11 @@
+/* =Board
+ ********/
+#board { width:600px; height:600px; position:relative; border:1px solid #333; -moz-box-shadow: 0 0 5px #888; -webkit-box-shadow: 0 0 5px#888; box-shadow: 0 0 5px #888; }
+#board .sq { width:75px; height:75px; float:left; position:relative; }
+#board .color-w.sq { color:#000; }
+#board .color-b.sq { color:#fff; }
+#history { position:absolute; left:650px; }
+
+#board .sq.selected span { width:71px; height:71px; position:absolute; border:2px solid #f00; }
+
+#board .ui-draggable-dragging span { display:none; }

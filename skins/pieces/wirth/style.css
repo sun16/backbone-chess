@@ -1,0 +1,14 @@
+.sq {background:url(./img/pieces.png) no-repeat 0 -999999px;  }
+/* {piece}{color} */
+.piece-bb{background-position: 0 0;} 
+.piece-bw{background-position: 0 -125px} 
+.piece-kb{background-position: 0 -250px} 
+.piece-kw{background-position: 0 -375px} 
+.piece-nb{background-position: 0 -500px} 
+.piece-nw{background-position: 0 -625px} 
+.piece-pb{background-position: 0 -750px} 
+.piece-pw{background-position: 0 -875px} 
+.piece-qb{background-position: 0 -1000px} 
+.piece-qw{background-position: 0 -1125px} 
+.piece-rb{background-position: 0 -1250px} 
+.piece-rw{background-position: 0 -1375px}
