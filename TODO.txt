@@ -1,0 +1,4 @@
+* add JavaScript Templates
+* reorganize JS
+* add a backbone application router
+* build views for forms

@@ -1,3 +1,14 @@
+function alert( message, type) {
+  type = type || 'warning';
+  var $alert = $('<div style="display:none;" data-alert="alert" class="alert-message '+ type+' fade in"><a href="#" class="close">x</a><p>'+ message +'</p></div>')
+  $alert.alert();
+  $('#messages').append($alert);
+  $alert.fadeIn('fast');
+  window.setTimeout(function(){
+    $alert.alert('close');
+  }, 5000);
+}
+
 var Square = Backbone.Model.extend({
   defaults: {
     pos: "",
@@ -116,6 +127,7 @@ var BoardView = Backbone.View.extend({
     var $squares = $t.find('.sq');
     $squares
       .draggable({
+        distance: 10,
         revert: true,
         containment:'parent',
         revertDuration:0,
@@ -150,6 +162,7 @@ var BoardView = Backbone.View.extend({
             to_model.set({piece: from_model.get('piece')});
             from_model.set({piece: null, selected: false});
             that.updateHistory();
+            $('#submit-move-form').show();
           }
           else {
             alert('invalid move');
@@ -170,7 +183,12 @@ var boardView = new BoardView({
   collection: board  
 });
 
-boardView.make();
-$('.content').append(boardView.el);
-$(boardView.el).wrap('<div class="row" />');
-boardView.render();
+$(function(){
+  boardView.make();
+  $('#board').replaceWith(boardView.el);
+  boardView.render();
+  $('#board-actions button[type=reset]').click(function(){
+    $(this).parent().hide();
+  });
+});
+

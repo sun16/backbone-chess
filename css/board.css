@@ -1,5 +1,6 @@
 /* =Board
  ********/
+#board-actions { width:435px; }
 #board { width:600px; height:600px; position:relative; border:1px solid #333; -moz-box-shadow: 0 0 5px #888; -webkit-box-shadow: 0 0 5px#888; box-shadow: 0 0 5px #888; }
 #board .sq { width:75px; height:75px; float:left; position:relative; }
 #board .color-w.sq { color:#000; }
