@@ -84,6 +84,7 @@ var Board = Backbone.Collection.extend({
 var BoardView = Backbone.View.extend({
   tagName: 'div',
   id: 'board',
+  className: 'span10',
   initialize: function() {
     var that = this;
     this.squareViews = [];
@@ -107,7 +108,7 @@ var BoardView = Backbone.View.extend({
       v.render();
       $t.append(v.el);
     });
-    $t.append('<div id="history"><h3>History</h3><pre></pre></div>')
+    $t.append('<div id="history" class="span4"><h3>History</h3><pre></pre></div>')
     this.updateHistory();
     var $squares = $t.find('.sq');
     $squares
@@ -167,5 +168,6 @@ var boardView = new BoardView({
 });
 
 boardView.make();
-$('body').append(boardView.el);
+$('.content').append(boardView.el);
+$(boardView.el).wrap('<div class="row" />');
 boardView.render();
