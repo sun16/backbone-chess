@@ -98,7 +98,9 @@ var BoardView = Backbone.View.extend({
     });
   },
   updateHistory: function() {
-    $(this.el).find('#history pre').text(chess.fen());
+    var history = chess.pgn();
+    history = $.trim(history.split(/(\d\.) /).join("\n").replace(/\.\n/g,'. ')).split("\n").join("<br />")
+    $(this.el).find('#history .content').html(history);
   },
   render: function() {
     var that = this;
@@ -108,7 +110,7 @@ var BoardView = Backbone.View.extend({
       v.render();
       $t.append(v.el);
     });
-    $t.append('<div id="history" class="span4"><h3>History</h3><pre></pre></div>')
+    $t.append('<div id="history" class="span4"><h3>History</h3><div class="content"></div></div>')
     this.updateHistory();
     var $squares = $t.find('.sq');
     $squares
