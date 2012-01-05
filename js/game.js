@@ -101,6 +101,7 @@ var BoardView = Backbone.View.extend({
     var history = chess.pgn();
     history = $.trim(history.split(/(\d\.) /).join("\n").replace(/\.\n/g,'. ')).split("\n").join("<br />")
     $(this.el).find('#history .content').html(history);
+    $('.whose-turn').text(chess.turn() == "w" ? "white's turn" : "black's turn");
   },
   render: function() {
     var that = this;
