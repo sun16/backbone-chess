@@ -185,11 +185,14 @@ var BoardView = Backbone.View.extend({
                 that.collection.reload();
                 break;
             }
+            console.log($to.position())
             $('#board').block({
               css: {
                 width:'230px',
-                cursor: 'normal'
+                cursor: 'normal',
+                top: chess.turn() !== 'w' ? '20px' : '300px',
               },
+              centerY: false,
               message: $('#submit-move-form')
             })
           }
