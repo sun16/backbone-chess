@@ -17,7 +17,8 @@
     <link href="css/board.css" rel="stylesheet" />
     <link href="skins/pieces/wirth/style.css" rel="stylesheet" />
     <style>
-      #board { background:url(skins/boards/wirth/board.png); }
+      .board-400 { background:url(skins/boards/wirth/board-400.png); }
+      .board-600 { background:url(skins/boards/wirth/board-600.png); }
     </style>
 
     <!-- Le fav and touch icons -->
@@ -53,17 +54,27 @@
         <div class="page-header">
           <h1>Game #123 <small class="whose-turn">white's turn</small></h1>
         </div><!--/#page-header-->
-          <div id="game" class="row">
-            <div id="messages" class="span10">
-            </div><!--/#messages-->
-            <div id="board"></div><!--/#board-->
-            <div id="board-actions" class="actions row span10">
-              <div id="submit-move-form" class="hidden">
-                <input type="submit" class="btn primary" value="Submit Move">&nbsp;
-                <button type="reset" class="btn">Cancel</button>
-              </div><!--/#submit-move-form-->
+        <div id="before-game" class="row">
+          <div id="messages" class="span5 offset1">
+          </div><!--/#messages-->
+        </div><!--/#before-game-->
+        <div id="game" class="row">
+          <div id="board" class="span7"></div><!--/#board-->
+          <div id="history" class="span6">
+            <h3>History</h3>
+            <div class="content">
             </div>
-          </div><!--/#game-->
+          </div><!--/#history-->
+        </div><!--/#game-->
+        <div id="board-actions" class="row">
+          <div class="span7">
+            <div id="submit-move-form" class="hidden actions">
+              <input type="submit" class="btn primary" value="Submit Move">&nbsp;
+              <button type="reset" class="btn">Cancel</button>
+            </div><!--/#submit-move-form-->
+          </div><!--/.span7-->
+        </div><!--/#board-actions-->
+
       </div><!--/.content-->
 
       <footer>

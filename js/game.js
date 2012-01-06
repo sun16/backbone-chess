@@ -95,7 +95,7 @@ var Board = Backbone.Collection.extend({
 var BoardView = Backbone.View.extend({
   tagName: 'div',
   id: 'board',
-  className: 'span10',
+  className: 'board-400 span7',
   initialize: function() {
     var that = this;
     this.squareViews = [];
@@ -111,7 +111,7 @@ var BoardView = Backbone.View.extend({
   updateHistory: function() {
     var history = chess.pgn();
     history = $.trim(history.split(/(\d\.) /).join("\n").replace(/\.\n/g,'. ')).split("\n").join("<br />")
-    $(this.el).find('#history .content').html(history);
+    $('#history .content').html(history);
     $('.whose-turn').text(chess.turn() == "w" ? "white's turn" : "black's turn");
   },
   render: function() {
@@ -122,7 +122,6 @@ var BoardView = Backbone.View.extend({
       v.render();
       $t.append(v.el);
     });
-    $t.append('<div id="history" class="span4"><h3>History</h3><div class="content"></div></div>')
     this.updateHistory();
     var $squares = $t.find('.sq');
     $squares
@@ -190,5 +189,9 @@ $(function(){
   $('#board-actions button[type=reset]').click(function(){
     $(this).parent().hide();
   });
+  $('#board-actions input[type=submit]').click(function(){
+    $(this).parent().hide();
+  });
+
 });
 

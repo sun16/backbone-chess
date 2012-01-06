@@ -1,14 +1,37 @@
-.sq {background:url(./img/pieces.png) no-repeat 0 -999999px;  }
+.board-400 .sq {
+  background:url(./img/pieces-400.png) no-repeat 0 -999999px;
+  width:50px;
+  height:50px;
+}
 /* {piece}{color} */
-.piece-bb{background-position: 0 0;} 
-.piece-bw{background-position: 0 -125px} 
-.piece-kb{background-position: 0 -250px} 
-.piece-kw{background-position: 0 -375px} 
-.piece-nb{background-position: 0 -500px} 
-.piece-nw{background-position: 0 -625px} 
-.piece-pb{background-position: 0 -750px} 
-.piece-pw{background-position: 0 -875px} 
-.piece-qb{background-position: 0 -1000px} 
-.piece-qw{background-position: 0 -1125px} 
-.piece-rb{background-position: 0 -1250px} 
-.piece-rw{background-position: 0 -1375px}
+.board-400 .piece-bb{background-position: 0 0;} 
+.board-400 .piece-bw{background-position: 0 -83.33px} 
+.board-400 .piece-kb{background-position: 0 -166.66px} 
+.board-400 .piece-kw{background-position: 0 -250px} 
+.board-400 .piece-nb{background-position: 0 -333.33px} 
+.board-400 .piece-nw{background-position: 0 -416.66px} 
+.board-400 .piece-pb{background-position: 0 -500px} 
+.board-400 .piece-pw{background-position: 0 -583.33px} 
+.board-400 .piece-qb{background-position: 0 -666.66px} 
+.board-400 .piece-qw{background-position: 0 -750px} 
+.board-400 .piece-rb{background-position: 0 -833.33px} 
+.board-400 .piece-rw{background-position: 0 -916.66px}
+
+.board-600 .sq {
+  background:url(./img/pieces-600.png) no-repeat 0 -999999px;
+  width:75px;
+  height:75px;
+}
+/* {piece}{color} */
+.board-600 .piece-bb{background-position: 0 0;} 
+.board-600 .piece-bw{background-position: 0 -125px} 
+.board-600 .piece-kb{background-position: 0 -250px} 
+.board-600 .piece-kw{background-position: 0 -375px} 
+.board-600 .piece-nb{background-position: 0 -500px} 
+.board-600 .piece-nw{background-position: 0 -625px} 
+.board-600 .piece-pb{background-position: 0 -750px} 
+.board-600 .piece-pw{background-position: 0 -875px} 
+.board-600 .piece-qb{background-position: 0 -1000px} 
+.board-600 .piece-qw{background-position: 0 -1125px} 
+.board-600 .piece-rb{background-position: 0 -1250px} 
+.board-600 .piece-rw{background-position: 0 -1375px}

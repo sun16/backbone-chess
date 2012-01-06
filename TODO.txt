@@ -1,3 +1,4 @@
+* resize board to 400x400
 * add JavaScript Templates
 * reorganize JS
 * add a backbone application router

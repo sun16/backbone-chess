@@ -1,12 +1,12 @@
 /* =Board
  ********/
-#board-actions { width:435px; }
-#board { width:600px; height:600px; position:relative; border:1px solid #333; -moz-box-shadow: 0 0 5px #888; -webkit-box-shadow: 0 0 5px#888; box-shadow: 0 0 5px #888; }
-#board .sq { width:75px; height:75px; float:left; position:relative; }
+.board-400 { width:400px; height:400px; }
+.board-600 { width:600px; height:600px; }
+#board { position:relative; border:1px solid #333; -moz-box-shadow: 0 0 5px #888; -webkit-box-shadow: 0 0 5px#888; box-shadow: 0 0 5px #888; }
+#board .sq { float:left; position:relative; }
 #board .color-w.sq { color:#000; }
 #board .color-b.sq { color:#fff; }
-#history { position:absolute; left:650px; }
 
-#board .sq.selected span { width:71px; height:71px; position:absolute; border:2px solid #f00; }
-
+.board-600 .sq.selected span { width:71px; height:71px; position:absolute; border:2px solid #f00; }
+.board-400 .sq.selected span { width:47px; height:47px; position:absolute; border:2px solid #f00; }
 #board .ui-draggable-dragging span { display:none; }
