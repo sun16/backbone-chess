@@ -122,6 +122,9 @@ var BoardView = Backbone.View.extend({
 
     });
   },
+  reload: function(){
+    return this.collection.reload();
+  },
   updateHistory: function() {
     var history = chess.pgn();
     history = $.trim(history.split(/(\d\.) /).join("\n").replace(/\.\n/g,'. ')).split("\n").join("<br />")
@@ -182,8 +185,13 @@ var BoardView = Backbone.View.extend({
                 that.collection.reload();
                 break;
             }
-
-            $('#submit-move-form').show();
+            $('#board').block({
+              css: {
+                width:'230px',
+                cursor: 'normal'
+              },
+              message: $('#submit-move-form')
+            })
           }
           else {
             alert('invalid move');
@@ -209,10 +217,14 @@ $(function(){
   $('#board').replaceWith(boardView.el);
   boardView.render();
   $('#board-actions button[type=reset]').click(function(){
-    $(this).parent().hide();
+    //$(this).parent().hide();
+    $("#board").unblock();
+    chess.undo();
+    boardView.reload();
   });
   $('#board-actions input[type=submit]').click(function(){
-    $(this).parent().hide();
+    //$(this).parent().hide();
+    $("#board").unblock();
   });
 
 });
