@@ -11,7 +11,6 @@ function alert( message, type) {
 
 var Square = Backbone.Model.extend({
   defaults: {
-    pos: "",
     piece:"",
     selected: false,
   },
@@ -21,6 +20,12 @@ var Square = Backbone.Model.extend({
       return 'piece-' + p.type + p.color;
     }
     return "";
+  },
+  getNumberPos: function() {
+    return this.get('id').match(/\d+/)[0];
+  },
+  getLeterPos: function() {
+    return this.get('id').match(/[a-z]+/)[0];
   }
 });
 
@@ -39,9 +44,10 @@ var SquareView = Backbone.View.extend({
     var $t = $(this.el);
     $t.html(_.template(this.template, this.model.attributes))
     $t.data({
-      pos: this.model.get('pos'),
+      id: this.model.get('id'),
       cid: this.model.cid
     });
+    $t.addClass(this.model.get('id'));
     //remove old class
     $t.attr('class', $t.attr('class').replace(/piece\-\w+/,''));
     $t.addClass(this.model.getPieceClass());
@@ -59,25 +65,33 @@ var Board = Backbone.Collection.extend({
     model: Square,
     initialize: function(models, options){
       this.chess = options.chess;
-      //build board
+      this.reload();
+      this.bind('change:selected', this.selectHandler)
+    }, //initialize
+    reload: function() {
       var letters = "abcdefgh".split('');
       for( var i = 8; i > 0; i-- ) {
         for(k in letters ) {
           var ch = letters[k];
-          var pos = ch + i;
-          var piece = chess.get(pos);
+          var id = ch + i;
+          var piece = this.chess.get(id);
           var sq = {
-            pos: pos
+            id: id
           }
           if( piece != null ) {
             sq['piece'] = piece;
           }
-          this.add(sq);
+          if( !this.get(id) ) {
+            this.add(sq);
+          }
+          else {
+            var sq_model = this.get(id);
+            sq_model.set({'piece': piece });
+          }
         } //for k in letters
       } //for i in 8..1
 
-      this.bind('change:selected', this.selectHandler)
-    }, //initialize
+    },//reloadBoard
     selectHandler: function( square ) {
       //item is being selected
       if( square.get('selected') ) {
@@ -134,7 +148,7 @@ var BoardView = Backbone.View.extend({
         start: function(event, ui) {
           console.log('dragstart');
           var $square = $(ui.helper);
-          var square = that.collection.getByCid($square.data('cid'));
+          var square = that.collection.get($square.data('id'));
           square.set({
             selected: true
           });
@@ -147,20 +161,28 @@ var BoardView = Backbone.View.extend({
           var $from = $(ui.draggable.context);
           var $to = $(this);
           var move = {
-            from: $from.data('pos'),
-            to: $to.data('pos')
+            from: $from.data('id'),
+            to: $to.data('id')
           };
-          var to_model = that.collection.getByCid($to.data('cid'))
-          var from_model = that.collection.getByCid($from.data('cid'))
+          var to_model = that.collection.get($to.data('id'))
+          var from_model = that.collection.get($from.data('id'))
           console.log('attempting move', move);
           var success = chess.move(move);
           if( success != null ) {
             console.log(chess.ascii());
-            var to_model = that.collection.getByCid($to.data('cid'))
-            var from_model = that.collection.getByCid($from.data('cid'))
             to_model.set({piece: from_model.get('piece')});
             from_model.set({piece: null, selected: false});
             that.updateHistory();
+            //reload the board on special cases
+            switch ( success.flags ) {
+              case chess.FLAGS.EP_CAPTURE: // en passant
+              case chess.FLAGS.PROMOTION:
+              case chess.FLAGS.KSIDE_CASTLE:
+              case chess.FLAGS.QSIDE_CASTLE:
+                that.collection.reload();
+                break;
+            }
+
             $('#submit-move-form').show();
           }
           else {
