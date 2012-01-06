@@ -190,7 +190,7 @@ var BoardView = Backbone.View.extend({
               css: {
                 width:'230px',
                 cursor: 'normal',
-                top: chess.turn() !== 'w' ? '20px' : '300px',
+                top:'375px'
               },
               centerY: false,
               message: $('#submit-move-form')
@@ -224,6 +224,7 @@ $(function(){
     $("#board").unblock();
     chess.undo();
     boardView.reload();
+    boardView.updateHistory();
   });
   $('#board-actions input[type=submit]').click(function(){
     //$(this).parent().hide();

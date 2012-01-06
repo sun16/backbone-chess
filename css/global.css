@@ -46,7 +46,7 @@ body {
   border: 0;
 }
 
-.blockUI .actions { padding:20px; margin:0; }
+.blockUI .actions { padding:10px; margin:0; }
 
 /* generic classes */
 .hidden { display:none; }
