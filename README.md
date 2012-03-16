@@ -9,4 +9,4 @@ If you are learning backbone, you may find this useful.
 
 Chess assets were provided by [Kevin Wirth @wirthdesign](https://twitter.com/wirthdesign). Please contact him before using!
 
-If you are interested in playing chess online, I recommend [Lichess](http://en.lichess.org/) [source code](https://github.com/ornicar/lichess)
+If you are interested in playing chess online, I recommend [Lichess](http://en.lichess.org/) ([source code](https://github.com/ornicar/lichess))
